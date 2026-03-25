@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 de Abril 🎀 Dulce & Alexis</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;500;700&family=Pacifico&family=Parisienne&family=Orbitron&display=swap');
+
+        :root { --hk-pink: #ff4d6d; --hk-soft: #ffb3c1; --hk-white: #ffffff; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fff0f5; font-family: 'Quicksand', sans-serif; overflow-x: hidden; color: #444; }
+
+        /* --- PANTALLA DE CONTRASEÑA --- */
+        #lock-screen { position: fixed; inset: 0; background: radial-gradient(circle, var(--hk-soft), var(--hk-pink)); z-index: 20000; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 1.2s cubic-bezier(0.7, 0, 0.3, 1); }
+        .lock-card { background: white; padding: 40px; border-radius: 40px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2); width: 90%; max-width: 380px; border: 6px solid var(--hk-soft); }
+        .hk-bow { font-size: 5rem; margin-bottom: 10px; animation: float 3s infinite ease-in-out; }
+        @keyframes float { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-15px);} }
+        .pass-input { border: 3px solid var(--hk-soft); padding: 18px; border-radius: 20px; font-family: 'Orbitron'; font-size: 1.6rem; text-align: center; width: 100%; color: var(--hk-pink); letter-spacing: 5px; margin: 20px 0; outline: none; background: #fff9fa; }
+
+        /* --- RELOJ FIJO --- */
+        .glass-clock { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.9); backdrop-filter: blur(15px); padding: 12px 25px; border-radius: 100px; border: 3px solid var(--hk-soft); z-index: 5000; box-shadow: 0 10px 40px rgba(255, 77, 109, 0.2); width: 90%; max-width: 400px; text-align: center; display: none; }
+        #timer { font-family: 'Orbitron'; font-size: 1.2rem; color: var(--hk-pink); font-weight: 700; }
+
+        /* --- SECCIONES DIVIDIDAS --- */
+        .section { display: none; min-height: 100vh; padding: 110px 20px 60px; opacity: 0; }
+        .active { display: block; opacity: 1; animation: fadeIn 0.8s forwards; }
+        @keyframes fadeIn { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
+
+        /* --- CAP 1: LA CARTA --- */
+        .carta-master { max-width: 800px; margin: 0 auto; background: white; padding: 50px 35px; border-radius: 40px; border: 5px solid var(--hk-soft); box-shadow: 0 25px 70px rgba(255, 77, 109, 0.1); position: relative; }
+        .carta-master h1 { font-family: 'Parisienne'; color: var(--hk-pink); text-align: center; font-size: 3rem; margin-bottom: 25px; }
+        .carta-master p { font-size: 1.1rem; line-height: 2.2; text-align: justify; }
+
+        /* --- CAP 2: SCRAPBOOK (FOTOS 8-20) --- */
+        .album-container { position: relative; width: 100%; height: 150vh; background: rgba(255,255,255,0.3); border-radius: 40px; margin-top: 20px; overflow: hidden; }
+        .polaroid { position: absolute; width: 240px; background: white; padding: 12px 12px 45px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 2px; cursor: move; z-index: 10; transition: transform 0.2s; }
+        .polaroid:hover { z-index: 100; transform: scale(1.05); }
+        .polaroid img { width: 100%; height: 220px; object-fit: cover; }
+        .polaroid p { font-family: 'Dancing Script'; font-size: 1.5rem; text-align: center; color: var(--hk-pink); margin-top: 10px; }
+        .tape { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); width: 100px; height: 35px; background: rgba(255, 179, 193, 0.5); backdrop-filter: blur(2px); border-radius: 3px; z-index: 20; }
+
+        /* --- BOTONES DE NAVEGACIÓN --- */
+        .btn-nav { background: var(--hk-pink); color: white; border: 4px solid white; padding: 18px 45px; border-radius: 100px; font-family: 'Pacifico'; font-size: 1.5rem; cursor: pointer; display: block; margin: 40px auto; box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3); transition: 0.3s; }
+        .btn-nav:active { transform: scale(0.95); }
+
+    </style>
+</head>
+<body onload="init()">
+
+    <div id="lock-screen">
+        <div class="lock-card">
+            <div class="hk-bow">🎀</div>
+            <h2 style="font-family:Pacifico; color:var(--hk-pink); font-size:1.8rem; margin-bottom:10px;">Dulce & Alexis</h2>
+            <p style="font-size:0.9rem; color:#888;">Nuestra fecha especial (DDMMAAAA)</p>
+            <input type="password" id="passcode" class="pass-input" maxlength="8" placeholder="********" oninput="checkPass()">
+        </div>
+    </div>
+
+    <div class="glass-clock" id="reloj-fijo"><div id="timer">00D 00H 00M 00S</div></div>
+    <audio id="musica" loop><source src="music/locos.mp3" type="audio/mpeg"></audio>
+
+    <div id="cap1" class="section active">
+        <div class="carta-master">
+            <h1>Para Mi Niña Hermosa 💗</h1>
+            <p>Te hago esto con la gran intención que de alguna manera pueda expresar en inmenso amor que siento por ti , ya que en realidad te amo de una manera tan sincera y enorme que con simples palabras or cosas no es suficiente transmitir y expresar este inmenso amor , me da tanta alegría que hayamos pasado tantas situaciones que afectaron nuestra pero a pesar de ellos hemos aprendí a mejor como pareja para amarnos y demostrar que de verdad queremos algo bonito y grandioso, no hay nada mejor que saber que cumplo 1 año contigo siento un alegría inmensa por eso porque es algo por lo cual estuve esperando tanto tiempo y por fin a llegado el día pero solamente es el inicio de lo lejos que llegaremos juntos y te prometo estar juntos contigo por toda la eternidad amando cada defecto de ti pero eso es lo de menos porque para mí no tienes ni un defecto eres la perfecta definición de la palabra Perfección simplemente todo de ti es bueno , al igual que para mí eres la mujer más hermosa que existe en todo el universo, mucha gracias por estar conmigo y darme la oportunidad de compartir tu vída conmigo te demostrare que yo realmente te amo y te aprecio con todo mi corazón , eres mi mundo pequeña eres simplemente todo para mí , haces que mis días sean más felices con el hecho de saber que eres mi novia que bonito es eso sabes , el primer día que te vi me quedé impresionado por lo hermosa que eras y desde ese momento nació un sentimiento que cada día aumenta más y mas y mas sin parar , alveces se me complican las cosas y cometo errores pero siempre trato de mejorar para darte lo mejor de mi porque realmente te quiero dejar en claro lo que siento por ti mi niña hermosa, vamos por muchos años más juntos y te prometo que siempre estaré contigo sin importar nada 💗</p>
+        </div>
+        <button class="btn-nav" onclick="irA(2)">Nuestros Momentos 📸</button>
+    </div>
+
+    <div id="cap2" class="section">
+        <h2 style="text-align:center; font-family:Pacifico; color:var(--hk-pink); font-size:2.5rem;">Nuestro Album 🎀</h2>
+        <div class="album-container" id="scrap-root"></div>
+        <button class="btn-nav" onclick="irA(3)">Mi Promesa ✨</button>
+    </div>
+
+    <div id="cap3" class="section">
+        <div class="carta-master" style="text-align:center;">
+            <h1 style="font-size:2.5rem;">Promesa Eterna ♾️</h1>
+            <p style="text-align:center;">Prometo cuidarte, escucharte y amarte cada día más de lo que lo hice ayer. Eres mi hoy y todos mis mañanas.</p>
+            <div style="font-size: 5rem; margin-top:20px;">🎀👸💗</div>
+        </div>
+        <button class="btn-nav" onclick="boom()">¡TE AMO! 🎆</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        const passCorrecto = "08042025";
+        const aniversario = new Date(2025, 3, 8); // 8 de Abril
+        const formatos = ['.jpg', '.png', '.jpeg', '.webp', '.jfif'];
+
+        function init() {
+            setInterval(updateTimer, 1000);
+            initScrapbook();
+        }
+
+        function checkPass() {
+            const input = document.getElementById('passcode').value;
+            if(input === passCorrecto) {
+                document.getElementById('lock-screen').style.transform = "translateY(-100%)";
+                document.getElementById('reloj-fijo').style.display = "block";
+                document.getElementById('musica').play();
+                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+            }
+        }
+
+        function updateTimer() {
+            const diff = new Date() - aniversario;
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff / 3600000) % 24);
+            const m = Math.floor((diff / 60000) % 60);
+            const s = Math.floor((diff / 1000) % 60);
+            document.getElementById('timer').innerText = `${d}D ${h}H ${m}M ${s}S`;
+        }
+
+        function initScrapbook() {
+            const root = document.getElementById('scrap-root');
+            for(let i=8; i<=20; i++) {
+                const p = document.createElement('div');
+                p.className = 'polaroid';
+                // Posiciones aleatorias iniciales
+                p.style.left = Math.random() * (window.innerWidth - 260) + 'px';
+                p.style.top = Math.random() * 800 + 'px';
+                p.style.transform = `rotate(${(Math.random() - 0.5) * 30}deg)`;
+                
+                p.innerHTML = `<div class="tape"></div><img id="img-${i}" src=""><p>Te Amo</p>`;
+                root.appendChild(p);
+                cargarImg(i);
+                makeDraggable(p);
+            }
+        }
+
+        function cargarImg(n) {
+            const img = document.getElementById(`img-${n}`);
+            let f = 0;
+            const tryNext = () => { if(f < formatos.length) { img.src = `img/${n}${formatos[f]}`; f++; } };
+            img.onerror = tryNext; tryNext();
+        }
+
+        function makeDraggable(el) {
+            let p1=0, p2=0, p3=0, p4=0;
+            const dragStart = (e) => {
+                const ev = e.touches ? e.touches[0] : e;
+                p3 = ev.clientX; p4 = ev.clientY;
+                document.onmousemove = dragMove;
+                document.ontouchmove = dragMove;
+            };
+            const dragMove = (e) => {
+                const ev = e.touches ? e.touches[0] : e;
+                p1 = p3 - ev.clientX; p2 = p4 - ev.clientY;
+                p3 = ev.clientX; p4 = ev.clientY;
+                el.style.top = (el.offsetTop - p2) + "px";
+                el.style.left = (el.offsetLeft - p1) + "px";
+            };
+            el.onmousedown = dragStart;
+            el.ontouchstart = dragStart;
+            document.onmouseup = document.ontouchend = () => {
+                document.onmousemove = null;
+                document.ontouchmove = null;
+            };
+        }
+
+        function irA(n) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById('cap'+n).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        function boom() {
+            confetti({ particleCount: 300, spread: 160, colors: ['#ff4d6d', '#ffffff'] });
+            alert("¡Feliz 1er Año, Mi Vida! ❤️");
+        }
+    </script>
+</body>
+</html>
