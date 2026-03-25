@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Eternidad 🎀</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;700&family=Pacifico&family=Parisienne&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #fff0f5; font-family: 'Quicksand', sans-serif; color: #4a4a4a; overflow-x: hidden; scroll-behavior: smooth; padding-bottom: 50px; }
+
+        /* --- CARTA PRINCIPAL --- */
+        .carta-master { 
+            max-width: 850px; margin: 80px auto; background: #fff; padding: 60px; 
+            border-radius: 30px; box-shadow: 0 25px 60px rgba(0,0,0,0.05);
+            position: relative; border: 4px solid #ffb3c1; z-index: 2;
+        }
+        
+        /* Fotos Kitty (1-7) - Estilo Stickers */
+        .kitty-float {
+            position: absolute; width: 130px; height: 130px; 
+            border: 5px solid white; border-radius: 20px;
+            box-shadow: 0 8px 15px rgba(255,77,109,0.3);
+            object-fit: cover; z-index: 5; animation: floatAnim 4s infinite ease-in-out;
+        }
+        @keyframes floatAnim {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        h1 { font-family: 'Parisienne', cursive; color: #ff4d6d; font-size: 3.5rem; text-align: center; margin-bottom: 30px; }
+        .texto-carta { font-size: 1.2rem; line-height: 2.2; text-align: justify; white-space: pre-line; color: #555; }
+
+        /* --- LÍNEA DEL TIEMPO CON FRASES (8-20) --- */
+        .seccion-timeline { max-width: 900px; margin: 100px auto; padding: 20px; }
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::after { content: ''; position: absolute; width: 6px; background: #ffb3c1; top: 0; bottom: 0; left: 50%; margin-left: -3px; border-radius: 10px; }
+
+        .momento { padding: 10px 40px; position: relative; width: 50%; }
+        .momento.izq { left: 0; text-align: right; }
+        .momento.der { left: 50%; text-align: left; }
+
+        .momento-card {
+            background: white; padding: 20px; border-radius: 25px;
+            border: 4px solid #ffb3c1; box-shadow: 0 10px 25px rgba(255,77,109,0.1);
+            transition: 0.5s;
+        }
+        .momento-card:hover { transform: scale(1.08) rotate(1deg); border-color: #ff4d6d; z-index: 10; }
+        .momento-card img { width: 100%; height: 280px; object-fit: cover; border-radius: 15px; margin-bottom: 15px; background: #fdf0f3; display: block;}
+        
+        .frase-momento { font-family: 'Pacifico', cursive; color: #ff85a2; font-size: 1.1rem; margin-top: 10px;}
+
+        /* --- MURAL 20 IDIOMAS --- */
+        .mural-idiomas { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; margin: 50px auto; max-width: 900px; padding: 20px; }
+        .idioma-card { 
+            background: white; border: 2px solid #ffb3c1; border-radius: 20px; height: 100px; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            cursor: pointer; transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .idioma-card span { font-size: 0.8rem; color: #ff85a2; font-weight: bold; margin-bottom: 5px; }
+        .idioma-card b { font-family: 'Pacifico', cursive; color: #ff4d6d; font-size: 1rem; opacity: 0; transform: translateY(20px); transition: 0.4s; }
+        .idioma-card:hover { background: #ff4d6d; border-color: #ff4d6d; transform: scale(1.1) rotate(3deg); }
+        .idioma-card:hover span { color: white; opacity: 0.7; }
+        .idioma-card:hover b { opacity: 1; transform: translateY(0); color: white; }
+
+        /* --- BOLSA DE FRASES MÁGICAS --- */
+        .bolsa-contenedor { max-width: 600px; margin: 80px auto; text-align: center; }
+        .bolsa { 
+            background: white; border: 4px dashed #ff4d6d; padding: 40px; border-radius: 30px; 
+            cursor: pointer; transition: 0.3s; position: relative; 
+            display: flex; flex-direction: column; align-items: center; gap: 20px;
+        }
+        .bolsa:hover { background: #fffcfd; transform: translateY(-5px); }
+        .bolsa::after { content: '🎁'; font-size: 60px; display: block; }
+        #frase-display { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: #ff4d6d; min-height: 80px; transition: opacity 0.3s; }
+
+        /* --- CONTADOR --- */
+        .reloj { font-family: 'Pacifico'; color: #ff4d6d; text-align: center; font-size: 2.5rem; margin: 40px 0; text-shadow: 2px 2px white; }
+
+        /* --- BOTÓN FINAL --- */
+        .btn-deseo {
+            background: #ff4d6d; color: white; border: none; padding: 20px 40px;
+            font-family: 'Pacifico'; font-size: 1.5rem; border-radius: 50px;
+            cursor: pointer; margin: 50px auto; display: block;
+            box-shadow: 0 10px 20px rgba(255,77,109,0.4);
+            transition: 0.3s;
+        }
+        .btn-deseo:hover { transform: scale(1.1); background: #ff1a43; }
+
+        /* --- DECORACIONES FLOTANTES --- */
+        .decor { position: fixed; font-size: 25px; pointer-events: none; z-index: -1; animation: animarFlote 6s linear infinite; }
+        @keyframes animarFlote {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="reloj" id="timer">Contando cada segundo a tu lado...</div>
+
+    <div class="carta-master">
+        <img id="k1" class="kitty-float" style="top:-60px; left:-40px;">
+        <img id="k2" class="kitty-float" style="top:-40px; right:-50px;">
+        <img id="k3" class="kitty-float" style="bottom:10%; left:-80px;">
+        <img id="k4" class="kitty-float" style="bottom:-50px; right:10px;">
+        <img id="k5" class="kitty-float" style="bottom: 40%; left: -60px; display:none;"> <h1>Para Mi Niña Hermosa</h1>
+        <div class="texto-carta">
+            Te hago esto con la gran intención que de alguna manera pueda expresar en inmenso amor que siento por ti , ya que en realidad te amo de una manera tan sincera y enorme que con simples palabras o cosas no es suficiente transmitir y expresar este inmenso amor , me da tanta alegría que hayamos pasado tantas situaciones que afectaron nuestra pero a pesar de ellos hemos aprendí a mejor como pareja para amarnos y demostrar que de verdad queremos algo bonito y grandioso, no hay nada mejor que saber que cumplo 1 año contigo siento un alegría inmensa por eso porque es algo por lo cual estuve esperando tanto tiempo y por fin a llegado el día pero solamente es el inicio de lo lejos que llegaremos juntos y te prometo estar juntos contigo por toda la eternidad amando cada defecto de ti pero eso es lo de menos porque para mí no tienes ni un defecto eres la perfecta definición de la palabra Perfección simplemente todo de ti es bueno , al igual que para mí eres la mujer más hermosa que existe en todo el universo, mucha gracias por estar conmigo y darme la oportunidad de compartir tu vída conmigo te demostrare que yo realmente te amo y te aprecio con todo mi corazón , eres mi mundo pequeña eres simplemente todo para mí , haces que mis días sean más felices con el hecho de saber que eres mi novia que bonito es eso sabes , el primer día que te vi me quedé impresionado por lo hermosa que eras y desde ese momento nació un sentimiento que cada día aumenta más y mas y mas sin parar , alveces se me complican las cosas y cometo errores pero siempre trato de mejorar para darte lo mejor de mi porque realmente te quiero dejar en claro lo que siento por ti mi niña hermosa, vamos por muchos años más juntos y te prometo que siempre estaré contigo sin importar nada 💗
+        </div>
+    </div>
+
+    <div class="seccion-timeline">
+        <h2 style="text-align:center; font-family:'Pacifico'; color:#ff4d6d; font-size:3rem; margin-bottom: 50px;">Nuestra Historia</h2>
+        <div class="timeline" id="linea-tiempo">
+            </div>
+    </div>
+
+    <h2 style="text-align:center; font-family:'Pacifico'; color:#ff4d6d; margin-top:80px;">Te Amo en 20 Idiomas</h2>
+    <div class="mural-idiomas" id="mural">
+        </div>
+
+    <div class="bolsa-contenedor">
+        <h2 style="text-align:center; font-family:'Pacifico'; color:#ff4d6d; margin-bottom:30px;">Una Bolsa de Frases Bonitas</h2>
+        <div class="bolsa" onclick="sacarFrase()">
+            <p style="font-weight:bold; color:#ff85a2; font-size: 1.1rem;">Toca la bolsa para una sorpresa</p>
+            <div id="frase-display">¡Haz clic!</div>
+        </div>
+    </div>
+
+    <button class="btn-deseo" onclick="soltarConfeti()">¡Pide un deseo! ✨</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    
+    <script>
+        const fechaInicio = new Date(2025, 2, 23); // 23 de Marzo 2025
+        const formatos = ['.jpeg', '.jpg', '.png', '.webp', '.jfif']; // Intentará todas estas
+
+        // Frases para la línea del tiempo (8-20)
+        const frasesTimeline = [
+            "Donde todo empezó 🌸", "Contigo todo es más bonito 😍", "Amo cada risa compartida ✨",
+            "Eres mi lugar seguro 🏠", "Mi felicidad eres tú 💖", "Gracias por no soltarme 🤝",
+            "Eres mi sueño hecho realidad 🌙", "Por mil años más así ♾️", "Mi mundo entero 🌎",
+            "Simplemente perfección 💎", "Cada día te amo más 📈", "Tú y yo contra el mundo 🛡️",
+            "Para siempre, lo prometo 💗"
+        ];
+
+        // Frases para la bolsa mágica
+        const frasesBolsa = [
+            "Eres el lugar al que siempre quiero volver. 🏠",
+            "Mi felicidad tiene tu nombre escrito. ✨",
+            "No te cambio por nada en este universo. 🌎",
+            "Eres mi persona favorita por siempre. 🎀",
+            "Gracias por hacerme el hombre más feliz. 💗",
+            "Contigo el mundo es un lugar más bonito. 🌸",
+            "Eres la perfección en persona. 😍",
+            "Amo cada pequeño detalle de ti. 💎",
+            "Tú y yo, por toda la eternidad. ♾️",
+            "Eres mi sueño hecho realidad. 🌙"
+        ];
+
+        // Idiomas (Te amo)
+        const listaIdiomas = [
+            {l:"Inglés", t:"I Love You"}, {l:"Francés", t:"Je t'aime"}, {l:"Italiano", t:"Ti amo"}, {l:"Japonés", t:"Aishiteru"}, {l:"Coreano", t:"Saranghae"}, {l:"Alemán", t:"Ich liebe dich"}, {l:"Portugués", t:"Eu te amo"}, {l:"Ruso", t:"Ya tebya lyublyu"}, {l:"Árabe", t:"Ana behibak"}, {l:"Chino", t:"Wo ai ni"}, {l:"Griego", t:"S'agapo"}, {l:"Latín", t:"Te amo"}, {l:"Hawaiano", t:"Aloha wau ia"}, {l:"Holandés", t:"Ik hou van jou"}, {l:"Turco", t:"Seni seviyorum"}, {l:"Polaco", t:"Kocham cię"}, {l:"Sueco", t:"Jag älskar dig"}, {l:"Catalán", t:"T'estimo"}, {l:"Filipino", t:"Mahal kita"}, {l:"Tailandés", t:"Phom rak khun"}
+        ];
+
+        window.onload = function() {
+            iniciarTodo();
+        };
+
+        function iniciarTodo() {
+            // 1. Reloj
+            setInterval(() => {
+                const diff = new Date() - fechaInicio;
+                const d = Math.floor(diff / (1000*60*60*24));
+                const h = Math.floor((diff / (1000*60*60)) % 24);
+                const m = Math.floor((diff / (1000*60)) % 60);
+                const s = Math.floor((diff / 1000) % 60);
+                document.getElementById('timer').innerHTML = `${d}D ${h}H ${m}M ${s}S Juntos 💖`;
+            }, 1000);
+
+            // 2. Cargar Fotos Kitty (1-7) - Sistema multi-formato
+            for(let i=1; i<=7; i++) {
+                const el = document.getElementById('k'+i);
+                if(el) {
+                    let f = 0;
+                    function intentarK() {
+                        if(f < formatos.length) { el.src = `img/${i}${formatos[f]}`; f++; }
+                    }
+                    el.onerror = intentarK; intentarK();
+                }
+            }
+
+            // 3. Cargar Timeline (8-20)
+            const tl = document.getElementById('linea-tiempo');
+            for(let i=8; i<=20; i++) {
+                const momento = document.createElement('div');
+                momento.className = `momento ${i % 2 === 0 ? 'der' : 'izq'}`;
+                
+                const card = document.createElement('div');
+                card.className = 'momento-card';
+                
+                const img = document.createElement('img');
+                let f = 0;
+                function intentarT() {
+                    if(f < formatos.length) { img.src = `img/${i}${formatos[f]}`; f++; }
+                }
+                img.onerror = intentarT; intentarT();
+
+                card.innerHTML = `<div class="frase-momento">${frasesTimeline[i-8]}</div>`;
+                card.prepend(img);
+                momento.appendChild(card);
+                tl.appendChild(momento);
+            }
+
+            // 4. Cargar Idiomas
+            const mural = document.getElementById('mural');
+            listaIdiomas.forEach(id => {
+                const div = document.createElement('div');
+                div.className = 'idioma-card';
+                div.innerHTML = `<span>${id.l}</span><b>${id.t}</b>`;
+                mural.appendChild(div);
+            });
+
+            // 5. Lluvia decorativa
+            const iconos = ['💗', '🎀', '🌸', '✨'];
+            setInterval(() => {
+                const drop = document.createElement('div');
+                drop.className = 'decor';
+                drop.innerHTML = iconos[Math.floor(Math.random()*iconos.length)];
+                drop.style.left = Math.random() * 100 + 'vw';
+                drop.style.animationDuration = (Math.random()*3 + 4) + 's';
+                document.body.appendChild(drop);
+                setTimeout(() => drop.remove(), 7000);
+            }, 400);
+        }
+
+        function sacarFrase() {
+            const display = document.getElementById('frase-display');
+            display.style.opacity = '0';
+            setTimeout(() => {
+                display.innerHTML = frasesBolsa[Math.floor(Math.random() * frasesBolsa.length)];
+                display.style.opacity = '1';
+            }, 300);
+        }
+
+        function soltarConfeti() {
+            if (typeof confetti !== 'undefined') {
+                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#ff4d6d', '#ffb3c1', '#ffffff'] });
+            } else {
+                alert("¡Deseo pedido! 💗 (Falta internet para el confeti)");
+            }
+        }
+    </script>
+</body>
+</html>
