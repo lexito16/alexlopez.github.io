@@ -85,7 +85,7 @@
             <img class="sticker-hk" id="hk-7" style="bottom:-30px; right:25%; width:90px; height:90px;">
 
             <h1>Mi Niña Hermosa 💗</h1>
-            <p>Te hago esto con la gran intención que de alguna manera pueda expresar en inmenso amor que siento por ti...</p>
+            <p>Te hago esto con la gran intención que de alguna manera pueda expresar en inmenso amor que siento por ti , ya que en realidad te amo de una manera tan sincera y enorme que con simples palabras or cosas no es suficiente transmitir y expresar este inmenso amor , me da tanta alegría que hayamos pasado tantas situaciones que afectaron nuestra pero a pesar de ellos hemos aprendí a mejor como pareja para amarnos y demostrar que de verdad queremos algo bonito y grandioso, no hay nada mejor que saber que cumplo 1 año contigo siento un alegría inmensa por eso porque es algo por lo cual estuve esperando tanto tiempo y por fin a llegado el día pero solamente es el inicio de lo lejos que llegaremos juntos y te prometo estar juntos contigo por toda la eternidad amando cada defecto de ti pero eso es lo de menos porque para mí no tienes ni un defecto eres la perfecta definición de la palabra Perfección simplemente todo de ti es bueno , al igual que para mí eres la mujer más hermosa que existe en todo el universo, mucha gracias por estar conmigo y darme la oportunidad de compartir tu vída conmigo te demostrare que yo realmente te amo y te aprecio con todo mi corazón , eres mi mundo pequeña eres simplemente todo para mí , haces que mis días sean más felices con el hecho de saber que eres mi novia que bonito es eso sabes , el primer día que te vi me quedé impresionado por lo hermosa que eras y desde ese momento nació un sentimiento que cada día aumenta más y mas y mas sin parar , alveces se me complican las cosas y cometo errores pero siempre trato de mejorar para darte lo mejor de mi porque realmente te quiero dejar en claro lo que siento por ti mi niña hermosa, vamos por muchos años más juntos y te prometo que siempre estaré contigo sin importar nada 💗</p>
         </div>
         <button class="btn-nav" onclick="irA(2)">Nuestros Momentos 📸</button>
     </div>
@@ -98,13 +98,31 @@
 
     <div id="cap3" class="section">
         <h2 style="text-align:center; font-family:Pacifico; color:var(--hk-pink); font-size:2.5rem;">Te Amo en el Mundo 🌍</h2>
+        <p style="text-align:center; color:#888; margin-bottom:15px;">(Toca cada país para descubrirlo)</p>
         <div class="idiomas-grid" id="idiomas-root"></div>
-        
+
         <h2 style="text-align:center; font-family:Pacifico; color:var(--hk-pink); font-size:2.5rem; margin-top:60px;">Nuestras Promesas 🌸</h2>
         <div class="promesa-item" onclick="revelar(this)">
             <span class="oculto-txt">Promesa #1 🎀</span>
-            <p class="revelado-txt">Prometo ser siempre tu lugar seguro. 🏠💗</p>
+            <p class="revelado-txt">Prometo ser siempre tu lugar seguro, ese abrazo donde todos tus miedos se calman. 🏠💗</p>
         </div>
+        <div class="promesa-item" onclick="revelar(this)">
+            <span class="oculto-txt">Promesa #2 🎀</span>
+            <p class="revelado-txt">Prometo escucharte siempre, incluso cuando no digas nada, y entender tu corazón. ✨💎</p>
+        </div>
+        <div class="promesa-item" onclick="revelar(this)">
+            <span class="oculto-txt">Promesa #3 🎀</span>
+            <p class="revelado-txt">Prometo que cada día me esforzaré por ser el hombre que mereces y te hace feliz. 😊🌹</p>
+        </div>
+        <div class="promesa-item" onclick="revelar(this)">
+            <span class="oculto-txt">Promesa #4 🎀</span>
+            <p class="revelado-txt">Prometo que no importa cuántos años pasen, siempre te miraré con la misma admiración que hoy. ♾️🤴</p>
+        </div>
+        <div class="promesa-item" onclick="revelar(this)">
+            <span class="oculto-txt">Promesa #5 🎀</span>
+            <p class="revelado-txt">Prometo elegirte a ti, cada día, por el resto de mi vida. Eres mi mundo, pequeña. 🌎💖</p>
+        </div>
+
         <div class="comp-heart">
             <svg class="heart-svg" viewBox="0 0 32 32"><path d="M16 28.5L14.1 26.6C7.2 20.3 2.5 16 2.5 10.7 2.5 6.4 5.9 3 10.2 3c2.4 0 4.7 1.1 6.3 2.9C18.1 4.1 20.4 3 22.8 3c4.3 0 7.7 3.4 7.7 7.7 0 5.3-4.7 9.6-11.6 15.9L16 28.5z"/></svg>
             <div style="font-family:Orbitron; font-size:2rem; color:var(--hk-pink);">100%</div>
@@ -123,7 +141,10 @@
             {p:"México", t:"Te Amo"}, {p:"USA", t:"I Love You"}, {p:"Francia", t:"Je t'aime"},
             {p:"Italia", t:"Ti amo"}, {p:"Alemania", t:"Ich liebe dich"}, {p:"Brasil", t:"Eu te amo"},
             {p:"Japón", t:"Aishiteru"}, {p:"Corea", t:"Saranghae"}, {p:"China", t:"Wo ai ni"},
-            {p:"Mundo", t:"¡Te amo mucho!"}
+            {p:"Rusia", t:"Ya tebya lyublyu"}, {p:"Grecia", t:"S'agapo"}, {p:"Turquía", t:"Seni seviyorum"},
+            {p:"Filipinas", t:"Mahal kita"}, {p:"Noruega", t:"Jeg elsker deg"}, {p:"Polonia", t:"Kocham cię"},
+            {p:"Holanda", t:"Ik hou van jou"}, {p:"Portugal", t:"Eu te amo"}, {p:"Rep. Checa", t:"Miluji tě"},
+            {p:"Suecia", t:"Jag älskar dig"}, {p:"Mundo", t:"¡Te amo mucho!"}
         ];
 
         function init() {
@@ -141,7 +162,7 @@
                 rootIdm.appendChild(div);
             });
             initScrapbook();
-            // CORREGIDO: Busca las fotos directamente sin carpeta img/
+            // Busca las fotos directamente sin carpeta img/
             for(let i=1; i<=7; i++) forceLoad(`hk-${i}`, `${i}`);
         }
 
@@ -176,7 +197,7 @@
                 p.style.transform = `rotate(${(Math.random()-0.5)*30}deg)`;
                 p.innerHTML = `<div class="tape"></div><img id="img-${i}" src=""><p>Te Amo ❤️</p>`;
                 root.appendChild(p);
-                // CORREGIDO: Busca las fotos directamente sin carpeta img/
+                // Busca las fotos directamente sin carpeta img/
                 forceLoad(`img-${i}`, `${i}`);
                 makeDraggable(p);
             }
